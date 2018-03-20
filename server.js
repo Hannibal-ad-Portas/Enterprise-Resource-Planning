@@ -12,7 +12,7 @@ const PORT = 3000;
 const dbConfig = require('./config/dbConfig');
 
 // Route Imports
-const organizations = require('./routes/organizations');
+const companies = require('./routes/companyRoutes');
 
 // Cors Middleware
 server.use(cors());
@@ -34,8 +34,8 @@ server.get('/', (req, res) => {
 	res.send('server.js: Invalid Endpoint...');
 });
 
-// Organization Route
-server.use('/orgs', organizations);
+// Company Route
+server.use('/company', companies);
 
 server.listen(PORT, () => {
 	console.log(`server.js: Server started on port:${PORT}...`);
