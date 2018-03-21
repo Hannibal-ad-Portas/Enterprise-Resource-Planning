@@ -18,11 +18,11 @@ router.post('/register', (req, res, next) => {
 
 	Company.addCompany(newCompany, (err, org) => {
 		if (err) {
-			res.json({success: false, msg: 'company/company.js: Failed to register company'});
+			res.json({success: false, msg: 'routes/companyRoutes.js: Failed to register company'});
 		} else {
-			res.json({success: true, msg: 'company/company.js: Registered company'})
+			res.json({success: true, msg: 'routes/companyRoutes.js: Registered company'})
 		}
-	})
+	});
 });
 
 
