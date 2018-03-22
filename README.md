@@ -20,7 +20,7 @@ Once you have finished getting everything set up then you are ready to run the s
 ## Running the server
 
 Running the server is quite simple. Type the following command into the terminal:
-- `node run dev:server`
+- `npm run dev:server`
 
 If this doesn't work then most likely the packages didn't transfer to the project when it was cloned. To re-download the packages run the following command:
 
