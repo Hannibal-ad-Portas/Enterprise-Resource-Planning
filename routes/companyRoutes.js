@@ -7,6 +7,8 @@ const Company = require('../models/company/company');
 
 const router = express.Router();
 
+//TODO: Better debug messages 
+
 // New Company Route
 router.post('/register', (req, res, next) => {
 	let newCompany = new Company({
@@ -26,6 +28,7 @@ router.post('/register', (req, res, next) => {
 });
 
 // Add Inventory Item Route
+// TODO: Check if item has already been added, if so increment the number property on the item object
 router.post('/:companyId/inventory/add_item', (req, res, next) => {
 	let newItem = {
 		itemName: req.body.itemName,
@@ -48,5 +51,9 @@ router.post('/:companyId/inventory/add_item', (req, res, next) => {
 		}
 	});
 });
+
+// TODO: Remove item route (Subtract it from inventory)
+
+// TODO: Remove item entry route (delete entire object instance)
 
 module.exports = router;

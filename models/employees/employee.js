@@ -4,7 +4,9 @@ const bcrypt = require('bcryptjs');
 const Company = require('../company/company');
 const PersonalData = require('./personalData');
 
-//TODO: 1) update function, 2) encrypt personal data
+//TODO: update function
+//TODO: encrypt personal data
+//TODO: Better debug messages 
 
 const EmployeeSchema = mongoose.Schema({
 	email: {

@@ -8,6 +8,8 @@ const mongoose = require('mongoose');
 const server = express();
 const PORT = 3000;
 
+//TODO: Better debug messages 
+
 // DB Config
 const dbConfig = require('./config/dbConfig');
 

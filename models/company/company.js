@@ -2,7 +2,9 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 const Employee = require('../employees/employee');
+
 //TODO: Convert inventory to schema maybe
+//TODO: Better debug messages 
 
 // Company Schema
 const CompanySchema = mongoose.Schema({

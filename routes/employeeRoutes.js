@@ -9,7 +9,8 @@ const PersonalData = require('../models/employees/personalData');
 
 const router = express.Router();
 
-//TODO: 1) update route
+//TODO: update route
+//TODO: Better debug messages 
 
 router.post('/:companyId/register', (req, res, next) => {
 	let newEmployee = new Employee({
