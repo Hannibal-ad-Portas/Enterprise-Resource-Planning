@@ -25,6 +25,28 @@ router.post('/register', (req, res, next) => {
 	});
 });
 
+// Add Inventory Item Route
+router.post('/:companyId/inventory/add_item', (req, res, next) => {
+	let newItem = {
+		itemName: req.body.itemName,
+		sku: req.body.sku,
+		amount: req.body.amount,
+		description: req.body.description
+	}
 
+	Company.findById(req.params.companyId, (error, company) => {
+		if (error) {
+			res.json({success: false, msg: 'routes/companyRoutes.js: Failed to find company'});
+		} else {
+			Company.addItemToInventory(newItem, company, (error, item) => {
+				if (error) {
+					res.json({success: false, msg: 'routes/companyRoutes.js: Failed to add item to inventory'});
+				} else {
+					res.json({success: true, msg: 'routes/companyRoutes.js: Added item'});
+				}
+			});
+		}
+	});
+});
 
 module.exports = router;

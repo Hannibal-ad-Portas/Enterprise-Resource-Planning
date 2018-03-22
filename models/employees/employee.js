@@ -4,6 +4,8 @@ const bcrypt = require('bcryptjs');
 const Company = require('../company/company');
 const PersonalData = require('./personalData');
 
+//TODO: 1) update function, 2) encrypt personal data
+
 const EmployeeSchema = mongoose.Schema({
 	email: {
 		type: String,
@@ -66,8 +68,13 @@ module.exports.addEmployee = function(newEmployee, company) {
 			} else {
 				newEmployee.password = hash;
 				company.employees.push(newEmployee);
-				company.numberOfEmployees++;
-				company.save();
+				company.save((error, employee) => {
+					if (error) {
+						console.log('Failed to add employee, error:' + error);
+					} else {
+						console.log('Employee added');
+					}
+				});
 			}
 		});
 	});

@@ -9,6 +9,8 @@ const PersonalData = require('../models/employees/personalData');
 
 const router = express.Router();
 
+//TODO: 1) update route
+
 router.post('/:companyId/register', (req, res, next) => {
 	let newEmployee = new Employee({
 		email: req.body.email,
@@ -24,11 +26,23 @@ router.post('/:companyId/register', (req, res, next) => {
 
 	Company.findById(req.params.companyId, (error, company) => {
 		if (error) {
-			res.send({success: false, msg:"Failed to add employee"});
+			res.send({success: false, msg:"Failed to add employee, error:"+ error});
 		} else {
 			Employee.addEmployee(newEmployee, company);
 		}
-	})
+	});
+});
+
+router.get('/:companyId/employees', (req, res, next) => {
+	let companyId = req.params.companyId;
+	Company.findById(companyId, (error, company) => {
+		if (error) {
+			res.send(`routes/employeeRoutes.js line 39: Failed to retrieve company, error:${error}`);
+		} else {
+			console.log('`routes/employeeRoutes.js line 41: Found company');
+			res.send(company.employees);
+		}
+	});
 });
 
 router.delete('/:companyId/remove_employee/:id', (req, res, next) => {
@@ -40,7 +54,13 @@ router.delete('/:companyId/remove_employee/:id', (req, res, next) => {
 				let id = company.employees[i].entries().next().value[1]._id;
 				if (id.toString() === req.params.id.toString()) {
 					company.employees.splice(i, 1);
-					company.save();
+					company.save((error, employee) => {
+						if (error) {
+							res.send("Failed to remove employee");
+						} else {	
+							res.send("Removed employee");
+						}
+					});
 				}
 			}
 		}

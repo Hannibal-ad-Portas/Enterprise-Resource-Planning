@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 const Employee = require('../employees/employee');
+//TODO: Convert inventory to schema maybe
 
 // Company Schema
 const CompanySchema = mongoose.Schema({
@@ -25,8 +26,8 @@ const CompanySchema = mongoose.Schema({
 		type: [[]],
 		required: false
 	},
-	numberOfEmployees: {
-		type: Number,
+	inventory: {
+		type: [[]],
 		required: false
 	}
 });
@@ -57,5 +58,16 @@ module.exports.addCompany = function(newCompany, callback) {
 				newCompany.save(callback);
 			}
 		});
+	});
+};
+
+module.exports.addItemToInventory = function(itemToAdd, company, callback) {
+	company.inventory.push(itemToAdd);
+	company.save((error, item) => {
+		if (error) {
+			console.log(`models/company/company.js: Failed to add item ${item} to inventory, error:${error}`);
+		} else {
+			console.log(`models/company/company.js: Added item ${item} to inventory`);
+		}
 	});
 };
