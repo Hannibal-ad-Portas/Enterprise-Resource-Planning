@@ -28,7 +28,7 @@ router.post('/register', (req, res, next) => {
 });
 
 // Add Inventory Item Route
-// TODO: Check if item has already been added, if so increment the number property on the item object
+// TODO: Check if item has already been added
 router.post('/:companyId/inventory/add_item', (req, res, next) => {
 	let newItem = {
 		itemName: req.body.itemName,
@@ -52,7 +52,9 @@ router.post('/:companyId/inventory/add_item', (req, res, next) => {
 	});
 });
 
-// TODO: Remove item route (Subtract it from inventory)
+// TODO: Add item amt 
+
+// TODO: Remove item amt
 
 // TODO: Remove item entry route (delete entire object instance)
 
