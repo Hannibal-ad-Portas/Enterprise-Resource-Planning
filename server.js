@@ -1,48 +1,37 @@
 const express = require('express');
-const path = require('path');
 const bodyParser = require('body-parser');
-const cors = require('cors');
-const passport = require('passport');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv').config();
 
 const server = express();
-const PORT = 3000;
 
-//TODO: Better debug messages 
+// Bring in routes
+const company = require('./routes/route');
 
-// DB Config
-const dbConfig = require('./config/dbConfig');
+// Set up mongoose connection
+mongoose.connect(process.env.DB_CONNECTION_STRING);
 
-// Route Imports
-const companies = require('./routes/companyRoutes');
-const employees = require('./routes/employeeRoutes');
-
-// Cors Middleware
-server.use(cors());
-
-// BodyParser Middleware
-server.use(bodyParser.json());
-
-// Connect Server To Database
-mongoose.connect(dbConfig.connectionURI);
-mongoose.connection.on('connected', () => {
-	console.log('server.js: Connected mongoose to database...');
+// Configure database connection to mongoose
+const db = mongoose.connection;
+db.on('error', (error) => {
+	console.log(`server.js (line 14): Error connecting to database, error:${error}...`);
 });
-mongoose.connection.on('error', (error) => {
-	console.log(`server.js: Failed to connect mongoose to database, error:${error}`);
+db.on('open', () => {
+	console.log(`server.js (line 17): Connected to database...`);
 });
 
-// Index Route
+// Body Parser Middleware
+server.use(bodyParser.json({extended: true}));
+
+// Set up index route
 server.get('/', (req, res) => {
-	res.send('server.js: Invalid Endpoint...');
+	res.send('server.js (line 27): Invalid endpoint...')
 });
 
-// Company Route
-server.use('/api/companies', companies);
+// Set up company route
+server.use('/api/company', company);
 
-// Employee Route
-server.use('/api/employees', employees);
-
-server.listen(PORT, () => {
-	console.log(`server.js: Server started on port:${PORT}...`);
+// Start the server
+server.listen(process.env.PORT, () => {
+	console.log(`server.js (line 26): Server running on port:${process.env.PORT}...`);
 });

@@ -1,33 +1,25 @@
 {
-  "name": "enterprise-resource-planning",
+  "name": "server_rewrite_test",
   "version": "1.0.0",
-  "description": "This is being developed for a school project.",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:server": "nodemon server.js"
+    "start": "nodemon server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Hannibal-ad-Portas/Enterprise-Resource-Planning.git"
-  },
-  "author": "Andrew Mingst, Tyler DeBrino, James Conroy, Austin Chiles",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Hannibal-ad-Portas/Enterprise-Resource-Planning/issues"
+  "devDependencies": {
+    "nodemon": "^1.17.2"
   },
-  "homepage": "https://github.com/Hannibal-ad-Portas/Enterprise-Resource-Planning#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
-    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
-    "jsonwebtoken": "^8.2.0",
-    "mongoose": "^5.0.10",
+    "moment": "^2.21.0",
+    "mongoose": "^5.0.11",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0"
-  },
-  "devDependencies": {
-    "nodemon": "^1.17.2"
   }
 }
