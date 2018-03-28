@@ -219,4 +219,24 @@ router.post('/:companyId/inventory/addItem', (req, res, next) => {
 	});
 });
 
+router.post('/:companyId/inventory/:itemSku/add/:amt', (req, res, next) => {
+	let id = req.params.companyId;
+	let item = req.params.itemSku;
+	let amt = req.params.amt;
+
+	Company.findCompany(id, (error, company) => {
+		if (error) {
+			console.log(`routes/route.js line(222): Error finding company, error:${error}...`);
+		} else {
+			Company.addAmountToItem(item, company, amt, (error, item) => {
+				if (error) {
+					console.log(`routes/route.js line(222): Error adding amount to item, error:${error}`);
+				} else {
+					res.json({success: true, msg:"Added amount to item successfully"});
+				}
+			});
+		}
+	});
+});
+
 module.exports = router;
