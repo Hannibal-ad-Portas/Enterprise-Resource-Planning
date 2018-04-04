@@ -1,7 +1,9 @@
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const Employee = require('./Employee').Employee;
 const Company = require('../Company/Company');
+const opts = require('../../config/auth');
 
 /*
 	TODO: Add Authentication
@@ -126,3 +128,58 @@ exports.deleteEmployee = (req, res) => {
 		}
 	});
 }
+
+exports.authenticateLogin = (req, res) => {
+	Company.findById(req.params.companyId, (err, company) => {
+		if (err) {
+			res.status(500).send(err);
+		}
+
+		if (!company) {
+			res.status(400).json({message: 'Company not found'});
+		}
+
+		let employees = company.employees;
+		let employee;
+
+		for (let i = 0; i < employees.length; i++) {
+			if (req.body.email === employees[i].email) {
+				employee = employees[i];
+			}
+		}
+
+		comparePassword(req.body.password, employee.password, (err, isMatch) => {
+			if (err) {
+				res.status(500).send(err);
+			}
+			if (isMatch) {
+				const token = jwt.sign(
+					{ data: employee },
+					opts.secretOrKey,
+					{ expiresIn: 604800 }
+				);
+				res.json({
+					success: true,
+					token: 'Bearer ' + token,
+					employee: {
+						id: employee._id,
+						firstName: employee.firstName,
+						lastName: employee.lastName,
+						email: employee.email
+					}
+				});
+			} else {
+				return res.json({success: false, msg: 'Wrong password'});
+			}
+		});
+	});
+};
+
+const comparePassword = (candidatePassword, hash, callback) => {
+	bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
+		if (err) {
+			throw err;
+		}
+		callback(null, isMatch);
+	});
+};

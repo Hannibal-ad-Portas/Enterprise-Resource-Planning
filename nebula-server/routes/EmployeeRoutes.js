@@ -14,4 +14,6 @@ router.put('/:companyId/:employeeId/update', employeeController.updateEmployee);
 
 router.delete('/:companyId/:employeeId/delete', employeeController.deleteEmployee);
 
+router.post('/:companyId/authenticate/login', employeeController.authenticateLogin);
+
 module.exports = router;
