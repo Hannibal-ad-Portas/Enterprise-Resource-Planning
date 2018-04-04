@@ -1,0 +1,21 @@
+{
+  "name": "nebula-server",
+  "version": "1.0.0",
+  "description": "The server code for the Nebula ERP",
+  "main": "server.js",
+  "scripts": {
+    "dev:start": "nodemon server.js"
+  },
+  "author": "Andrew Mingst, Austin Chiles, James Conroy, Tyler DeBrino",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "moment": "^2.22.0",
+    "mongoose": "^5.0.12"
+  }
+}
