@@ -2,6 +2,9 @@ const Company = require('./Company');
 
 exports.createNewCompany = (req, res) => {
 	let newCompany = new Company(req.body);
+
+	let cCode = makeId();
+	newCompany.companyCode = cCode;
 	
 	newCompany.save((err, company) => {
 		if (err) {
@@ -55,4 +58,15 @@ exports.deleteCompany = (req, res) => {
 
 		res.status(200).json(company);
 	});
+};
+
+const makeId = () => {
+	let text = '';
+	let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+	for (let i = 0; i < 5; i++) {
+		text += possible.charAt(Math.floor(Math.random() * possible.length));
+	}
+
+	return text;
 };

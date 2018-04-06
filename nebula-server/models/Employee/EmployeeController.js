@@ -32,6 +32,7 @@ exports.createNewEmployee = (req, res) => {
 					res.status(500).send(err);
 				}
 
+				newEmployee.parentCompanyCode = company.companyCode;
 				newEmployee.password = hash;
 
 				company.employees.push(newEmployee);
@@ -165,7 +166,8 @@ exports.authenticateLogin = (req, res) => {
 						id: employee._id,
 						firstName: employee.firstName,
 						lastName: employee.lastName,
-						email: employee.email
+						email: employee.email,
+						parentId: company._id
 					}
 				});
 			} else {

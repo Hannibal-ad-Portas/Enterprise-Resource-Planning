@@ -39,6 +39,10 @@ const EmployeeSchema = new Schema({
 	createdOn: {
 		type: Date,
 		default: Date.now
+	},
+	parentCompanyCode: {
+		type: String,
+		required: true
 	}
 });
 

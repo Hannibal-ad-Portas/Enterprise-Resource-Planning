@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 
 /*
 	TODO: Add Panel Routes
@@ -13,6 +14,7 @@ const employeeRoutes = require('./routes/EmployeeRoutes');
 const inventoryRoutes = require('./routes/InventoryRoutes');
 
 require('./config/db');
+require('./auth/EmployeeLoginStrategy')(passport);
 
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({extended: true}));

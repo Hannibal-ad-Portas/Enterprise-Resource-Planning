@@ -24,6 +24,11 @@ const CompanySchema = new Schema({
 	createdOn: {
 		type: Date,
 		default: Date.now
+	},
+	companyCode: {
+		type: String,
+		required: true,
+		unique: true
 	}
 });
 
