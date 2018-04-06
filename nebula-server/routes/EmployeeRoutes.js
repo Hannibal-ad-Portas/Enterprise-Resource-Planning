@@ -3,8 +3,6 @@ const passport = require('passport');
 
 const employeeController = require('../models/Employee/EmployeeController');
 
-//require('../auth/EmployeeLoginStrategy')(passport);
-
 const router = express.Router();
 
 router.post('/:companyId/createNewEmployee', employeeController.createNewEmployee);
