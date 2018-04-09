@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const ItemType = require('../Item/Item').ItemType;
+const PaymentInfo = require('../PaymentInfo/PaymentInfo');
 
 const OrderSchema = mongoose.Schema({
 	orderCode: {

@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const EmployeeType = require('../Employee/Employee').EmployeeType;
 const ItemType = require('../Item/Item').ItemType;
+const CustomerType = require('../Customer/Customer').CustomerType;
 
 const Schema = mongoose.Schema;
 
@@ -19,6 +20,10 @@ const CompanySchema = new Schema({
 	},
 	inventory: {
 		type: [ItemType],
+		required: false
+	},
+	customers: {
+		type: [CustomerType],
 		required: false
 	},
 	createdOn: {
