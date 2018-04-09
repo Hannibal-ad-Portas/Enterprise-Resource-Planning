@@ -1,5 +1,6 @@
 const Customer = require('./Customer').Customer;
 const Company = require('../Company/Company');
+const PaymentInfo = require('../PaymentInfo/PaymentInfo');
 
 exports.createNewCustomer = (req, res) => {
 	let newCustomer = new Customer(req.body);
@@ -100,6 +101,31 @@ exports.deleteCustomer = (req, res) => {
 					res.status(200).json(company);
 					return true;
 				});
+			}
+		}
+	});
+};
+
+exports.addPaymentMethod = (req, res) => {
+	let newPaymentMethod = new PaymentInfo(req.body.cardNumber, req.body.cardHolder, req.body.expiration, req.body.cvv);
+
+	Company.findById(req.params.companyId, (err, company) => {
+		if (err) {
+			res.status(500).json(err);
+		}
+
+		if (!company) {
+			res.status(404).json({message: 'Company not found'});
+		}
+
+		let customers = company.customers;
+
+		for (let i = 0; i < customers.length; i++) {
+			let customerToCheck = customers[i];
+
+			if (req.params.customerId.toString() === customerToCheck._id.toString()) {
+				//company.customers.paymentInfo.push(newPaymentMethod);
+				console.log(company.customers.paymentInfo);
 			}
 		}
 	});

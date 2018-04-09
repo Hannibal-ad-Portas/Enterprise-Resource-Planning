@@ -14,4 +14,6 @@ router.put('/:companyId/:customerId/update', customerController.updateCustomer);
 
 router.delete('/:companyId/:customerId/delete', customerController.deleteCustomer);
 
+router.post('/:companyId/:customerId/addPaymentMethod', customerController.addPaymentMethod);
+
 module.exports = router;

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const dbUri = 'mongodb://dev:BZzPXXG8N48Kk04q@neubula-cluster-0-shard-00-00-eqgp3.mongodb.net:27017,neubula-cluster-0-shard-00-01-eqgp3.mongodb.net:27017,neubula-cluster-0-shard-00-02-eqgp3.mongodb.net:27017/test?ssl=true&replicaSet=Neubula-Cluster-0-shard-0&authSource=admin';
+const dbUri = 'mongodb://dev:vEePdAnue538cNtg@neubula-cluster-0-shard-00-00-eqgp3.mongodb.net:27017,neubula-cluster-0-shard-00-01-eqgp3.mongodb.net:27017,neubula-cluster-0-shard-00-02-eqgp3.mongodb.net:27017/test?ssl=true&replicaSet=Neubula-Cluster-0-shard-0&authSource=admin';
 
 const options = {
 	reconnectTries: Number.MAX_VALUE,

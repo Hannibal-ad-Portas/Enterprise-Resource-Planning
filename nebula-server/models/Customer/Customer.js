@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-const PaymentInfo = require('../PaymentInfo/PaymentInfo');
-const OrderType = require('../Order/Order').OrderType;
+const PaymentInfoType = require('../PaymentInfo/PaymentInfo').PaymentInfoType;
 
 // TODO: Add payment info object 
 
@@ -15,11 +14,11 @@ const CustomerSchema = mongoose.Schema({
 		required: true
 	},
 	orderHistory: {
-		type: [OrderType],
+		type: [],
 		required: false
 	},
 	paymentInfo: {
-		type: [PaymentInfo],
+		type: [PaymentInfoType],
 		required: false
 	}
 });

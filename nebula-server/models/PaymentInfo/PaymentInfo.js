@@ -1,26 +1,10 @@
-class PaymentInfo {
-	constructor(cardNumber, expiration, name, cvv) {
-		this.cardNumber = cardNumber;
-		this.expiration = expiration;
-		this.name = name;
+class PaymentInfoType {
+	constructor(number, holder, exp, cvv) {
+		this.cardNumber = number;
+		this.cardHolder = holder;
+		this.expiration = exp;
 		this.cvv = cvv;
-	}
-
-	get cardNumber() {
-		return this.cardNumber;
-	}
-
-	get expiration() {
-		return this.expiration;
-	}
-
-	get name() {
-		return this.name;
-	}
-
-	get cvv() {
-		return this.cvv;
 	}
 }
 
-module.exports = typeof PaymentInfo;
+module.exports = PaymentInfoType;
