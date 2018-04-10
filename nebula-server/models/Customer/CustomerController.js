@@ -2,6 +2,8 @@ const Customer = require('./Customer').Customer;
 const Company = require('../Company/Company');
 const PaymentInfo = require('../PaymentInfo/PaymentInfo');
 
+// TODO: Add method to edit payment info
+
 exports.createNewCustomer = (req, res) => {
 	let newCustomer = new Customer(req.body);
 	let companyId = req.params.companyId;
@@ -124,8 +126,45 @@ exports.addPaymentMethod = (req, res) => {
 			let customerToCheck = customers[i];
 
 			if (req.params.customerId.toString() === customerToCheck._id.toString()) {
-				//company.customers.paymentInfo.push(newPaymentMethod);
-				console.log(company.customers.paymentInfo);
+				company.customers[i].paymentInfo.push(newPaymentMethod);
+				company.save((err, company) => {
+					if (err) {
+						res.status(500).json(err);
+					}
+
+					res.status(201).json({message: 'Card added', company: company});
+				});
+			}
+		}
+	});
+};
+
+exports.removePaymentMethod = (req, res) => {
+	Company.findById(req.params.companyId, (err, company) => {
+		if (err) {
+			res.status(500).json(err);
+		}
+
+		if (!company) {
+			res.status(404).json({message: 'Company not found'});
+		}
+
+		let customers = company.customers;
+
+		for (let i = 0; i < customers.length; i++) {
+			let paymentInfo = customers[i].paymentInfo;
+
+			for (let j = 0; j < paymentInfo.length; j++) {
+				if (paymentInfo[j].cardNumber.toString() === req.params.cardNumber.toString()) {
+					company.customers[i].paymentInfo.splice(j, 1);
+					company.save((err, company) => {
+						if (err) {
+							res.status(500).json(err);
+						}
+	
+						res.status(200).json({message: 'Card removed', company: company});
+					});
+				}
 			}
 		}
 	});

@@ -16,4 +16,6 @@ router.delete('/:companyId/:customerId/delete', customerController.deleteCustome
 
 router.post('/:companyId/:customerId/addPaymentMethod', customerController.addPaymentMethod);
 
+router.delete('/:companyId/:customerId/:cardNumber/removePaymentMethod', customerController.removePaymentMethod);
+
 module.exports = router;
