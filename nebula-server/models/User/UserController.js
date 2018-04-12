@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 
 exports.createNewUser = (req, res) => {
 	let newUser = new User(req.body);
+	newUser.dateCreated = Date.now();
 
 	bcrypt.genSalt(10, (err, salt) => {
 		if (err) {

@@ -1,32 +1,19 @@
-<div class="loginUser">
-	<br>
-	<h1 class="text-center text-primary-color">Register User</h1>
-	<div class="container">
-		<form action="">
-			<div class="form-group">
-				<label for="inputEmail" class="text-primary-color">Email:</label>
-				<input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
-			</div>
-			<div class="form-group">
-				<label for="inputPassword" class="text-primary-color">Password:</label>
-				<input type="password" class="form-control" id="inputPassword" aria-describedby="passwordHelp" placeholder="Enter password">
-			</div>
-			<div class="form-group">
-				<label for="inputPasswordAgain" class="text-primary-color">Re-Type Password:</label>
-				<input type="password" class="form-control" id="inputPasswordAgain" aria-describedby="passwordHelp" placeholder="Enter password... again">
-			</div>
-			<div class="form-group">
-				<label for="inputFirstName" class="text-primary-color">First Name: </label>
-				<input type="text" class="form-control" id="inputFirstName" aria-describedby="firstNameHelp" placeholder="Input first name">
-			</div>
-			<div class="form-group">
-				<label for="inputLastName" class="text-primary-color">Last Name: </label>
-				<input type="text" class="form-control" id="inputLastName" aria-describedby="lastNameHelp" placeholder="Input last name">
-			</div>
-			<br>
-			<button type="submit" class="btn btn-primary">Register</button>
-			<br>
-			<br>
-		</form>
+<form action="" (submit)="onRegisterSubmit()">
+	<div class="form-group">
+		<label for="">Email:</label>
+		<input type="email" class="form-control" name="email" [(ngModel)]="email">
 	</div>
-</div>
+	<div class="form-group">
+		<label for="">Password:</label>
+		<input type="password" class="form-control" name="password" [(ngModel)]="password">
+	</div>
+	<div class="form-group">
+		<label for="">First Name:</label>
+		<input type="text" class="form-control" name="firstName" [(ngModel)]="firstName">
+	</div>
+	<div class="form-group">
+		<label for="">Last Name:</label>
+		<input type="text" class="form-control" name="lastName" [(ngModel)]="lastName">
+	</div>
+	<input type="submit" class="btn btn-primary">
+</form>

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const PaymentInfoType = require('../PaymentInfo/PaymentInfo');
 
-const User = mongoose.Schema({
+const UserSchema = mongoose.Schema({
 	email: {
 		type: String,
 		required: true
@@ -18,10 +18,6 @@ const User = mongoose.Schema({
 	lastName: {
 		type: String,
 		required: true
-	},
-	paymentMethods: {
-		type: [PaymentInfoType],
-		required: false
 	},
 	dateCreated: {
 		type: String,
