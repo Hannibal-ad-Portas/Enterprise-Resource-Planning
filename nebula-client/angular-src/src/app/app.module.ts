@@ -8,9 +8,11 @@ import { LandingComponent } from './components/landing/landing.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { EmployeeRegisterComponent } from './components/employee-register/employee-register.component';
+import { UserRegisterComponent } from './components/user-register/user-register.component';
 
 const routes: Routes = [
-	{path: '', component: LandingComponent}
+	{path: '', component: LandingComponent},
+	{path: 'user/register', component: UserRegisterComponent}
 ]
 
 @NgModule({
@@ -20,6 +22,7 @@ const routes: Routes = [
     NavbarComponent,
     FooterComponent,
     EmployeeRegisterComponent,
+    UserRegisterComponent,
   ],
   imports: [
 	BrowserModule,
