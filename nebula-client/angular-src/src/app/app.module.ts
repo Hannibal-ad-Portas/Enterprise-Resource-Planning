@@ -15,12 +15,18 @@ import { UserRegisterComponent } from './components/user-register/user-register.
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
 import { UserLoginComponent } from './components/user-login/user-login.component';
+import { UserPanelComponent } from './components/user-panel/user-panel.component';
+import { CreateCompanyComponent } from './components/create-company/create-company.component';
+import { ManageCompanyComponent } from './components/manage-company/manage-company.component';
 
 const routes: Routes = [
 	{path: '', component: LandingComponent},
 	{path: 'user/register', component: UserRegisterComponent},
-	{path: 'user/login', component: UserLoginComponent}
-]
+	{path: 'user/login', component: UserLoginComponent},
+	{path: 'user/:id', component: UserPanelComponent},
+	{path: 'user/:id/createCompany', component: CreateCompanyComponent},
+	{path: 'user/:id/manageCompany/:companyId', component: ManageCompanyComponent}
+];
 
 @NgModule({
   declarations: [
@@ -31,6 +37,9 @@ const routes: Routes = [
     EmployeeRegisterComponent,
     UserRegisterComponent,
     UserLoginComponent,
+    UserPanelComponent,
+    CreateCompanyComponent,
+    ManageCompanyComponent,
   ],
   imports: [
 	BrowserModule,

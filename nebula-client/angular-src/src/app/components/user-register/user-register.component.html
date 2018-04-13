@@ -1,27 +1,35 @@
-<div class="container">
-	<h2 class="display-2 text-center">Register</h2>
-	<form action="" (submit)="onRegisterSubmit()">
-		<div class="form-group">
-			<label for="">Email:</label>
-			<input type="email" class="form-control" name="email" [(ngModel)]="email">
-		</div>
-		<div class="form-group">
-			<label for="">Password:</label>
-			<input type="password" class="form-control" name="password" [(ngModel)]="password">
-		</div>
-		<div class="form-group">
-			<label for="">First Name:</label>
-			<input type="text" class="form-control" name="firstName" [(ngModel)]="firstName">
-		</div>
-		<div class="form-group">
-			<label for="">Last Name:</label>
-			<input type="text" class="form-control" name="lastName" [(ngModel)]="lastName">
-		</div>
-		<input type="submit" class="btn btn-primary">
+<section class="registerBg">
+	<app-navbar></app-navbar>
+	<div class="container text-primary-color">
+		<br>
+		<br>
+		<h2 class="display-2 text-center ">Register</h2>
+		<br>
+		<br>
+		<form action="" (submit)="onRegisterSubmit()">
+			<div class="form-group">
+				<label for="">Email:</label>
+				<input type="email" class="form-control" name="email" [(ngModel)]="email">
+			</div>
+			<div class="form-group">
+				<label for="">Password:</label>
+				<input type="password" class="form-control" name="password" [(ngModel)]="password">
+			</div>
+			<div class="form-group">
+				<label for="">First Name:</label>
+				<input type="text" class="form-control" name="firstName" [(ngModel)]="firstName">
+			</div>
+			<div class="form-group">
+				<label for="">Last Name:</label>
+				<input type="text" class="form-control" name="lastName" [(ngModel)]="lastName">
+			</div>
+			<input type="submit" class="btn btn-primary">
+			<br>
+			<br>
+		</form>
 		<br>
 		<br>
 		<a routerLink="/" class="btn btn-primary">Employee Register</a>
-	</form>
-</div>
-
+	</div>
+</section>
 

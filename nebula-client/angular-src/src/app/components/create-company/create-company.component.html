@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+
+<section>
+	<div class="container text-center">
+		<h2 class="display-2">Create Company</h2>
+	</div>
+	<br>
+	<br>
+</section>
+<section class="default-primary-color text-white">
+	<br>
+	<div class="container">
+		<form (submit)="onCreateCompanySubmit()" #f="ngForm" >
+			<div class="form-group">
+				<label for="">Company Name:</label>
+				<input type="text" class="form-control" name="companyName" [(ngModel)]="companyName">
+			</div>
+			<div class="form-group">
+				<label for="subs">Subscription Tier:</label>
+				<select name="subs" id="subs" class="form-control" [(ngModel)]="subscriptionPlan">
+					<option *ngFor="let sub of this.subscriptions" [value]="sub">{{sub}}</option>
+				</select>
+			</div>
+			<input type="submit" class="btn btn-primary">
+			<br>
+			<br>
+		</form>
+	</div>
+</section>

@@ -1,4 +1,5 @@
 const Company = require('./Company');
+const User = require('../User/User').User;
 
 exports.createNewCompany = (req, res) => {
 	let newCompany = new Company(req.body);
@@ -11,7 +12,20 @@ exports.createNewCompany = (req, res) => {
 			res.status(500).send(err);
 		}
 
-		res.status(201).json(company);
+		User.findById(req.body.parentId, (err, user) => {
+			if (err) {
+				res.status(500).json(err);
+			}
+
+			user.companies.push(newCompany);
+			user.save((err, user) => {
+				if (err) {
+					res.status(500).json(err);
+				}
+				
+				res.status(201).json(company);
+			});
+		});
 	});
 };
 

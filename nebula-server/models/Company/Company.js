@@ -34,6 +34,22 @@ const CompanySchema = new Schema({
 		type: String,
 		required: true,
 		unique: true
+	},
+	parentId: {
+		type: String,
+		required: true
+	},
+	subscriptionPlan: {
+		type: String,
+		required: true
+	},
+	subscriptionCost: {
+		type: Number,
+		required: true
+	},
+	paymentUsed: {
+		type: {},
+		required: false
 	}
 });
 

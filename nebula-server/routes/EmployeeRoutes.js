@@ -21,5 +21,5 @@ router.get('/:companyId/employeeData', passport.authenticate('employeeLogin', {s
 	let employee = req.user;
 	res.json(employee);
 });
-
+ 
 module.exports = router;

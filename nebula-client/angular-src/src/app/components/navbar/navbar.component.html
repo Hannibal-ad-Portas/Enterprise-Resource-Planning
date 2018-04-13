@@ -9,10 +9,16 @@
 		<div class="collapse navbar-collapse" id="navbarMain" >
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-					<a class="nav-link" routerLink="/user/register">register</a>
+					<a class="nav-link" routerLink="/user/register" *ngIf="!user">register</a>
 				</li>
 				<li>
-					<a class="nav-link" routerLink="/user/login">login</a>
+					<a class="nav-link" routerLink="/user/login" *ngIf="!user">login</a>
+				</li>
+				<li>
+					<a class="nav-link" (click)="goToProfile()" *ngIf="user">profile</a>
+				</li>
+				<li>
+					<a class="nav-link" (click)="onLogoutClick()" href="#" *ngIf="user">logout</a>
 				</li>
 			</ul>
 		</div>

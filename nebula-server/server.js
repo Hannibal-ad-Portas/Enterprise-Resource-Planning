@@ -18,6 +18,7 @@ const userRoutes = require('./routes/UserRoutes');
 
 require('./config/db');
 require('./auth/EmployeeLoginStrategy')(passport);
+require('./auth/UserLoginStrategy')(passport);
 
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({extended: true}));

@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+
+<section>
+	<div class="container text-center" *ngIf="user">
+		<h3 class="display-3">Welcome, {{user.firstName}}!</h3>
+	</div>
+	<br>
+	<br>
+</section>
+<section class="default-primary-color">
+	<br>
+	<div class="container">
+		<div class="card shadow">
+			<div class="card-body">
+				<h5 class="card-title">Companies</h5>
+				<h6 class="card-subtitle mb-2 text-muted">Click a company to manage it</h6>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item" *ngFor="let company of companies"> <a class="text-primary" (click)="onCompanyClick($event)">{{company.companyName}}</a> </li>
+				</ul>
+				<br>
+				<button class="btn-primary btn" (click)="onCreateCompanyClick()">Create Company</button>
+			</div>
+		</div>
+	</div>
+	<br>
+</section>
