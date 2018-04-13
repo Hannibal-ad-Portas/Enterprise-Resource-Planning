@@ -14,10 +14,12 @@ import { EmployeeRegisterComponent } from './components/employee-register/employ
 import { UserRegisterComponent } from './components/user-register/user-register.component';
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
+import { UserLoginComponent } from './components/user-login/user-login.component';
 
 const routes: Routes = [
 	{path: '', component: LandingComponent},
-	{path: 'user/register', component: UserRegisterComponent}
+	{path: 'user/register', component: UserRegisterComponent},
+	{path: 'user/login', component: UserLoginComponent}
 ]
 
 @NgModule({
@@ -28,6 +30,7 @@ const routes: Routes = [
     FooterComponent,
     EmployeeRegisterComponent,
     UserRegisterComponent,
+    UserLoginComponent,
   ],
   imports: [
 	BrowserModule,
