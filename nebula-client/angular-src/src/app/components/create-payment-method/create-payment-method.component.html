@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+
+<section>
+	<div class="container text-center">
+		<h2 class="display-2">Add New Payment Method</h2>
+	</div>
+	<br>
+	<br>
+</section>
+<section class="default-primary-color text-white">
+	<br>
+	<div class="container">
+		<form (submit)="onCreatePaymentSubmit()" #f="ngForm" >
+			<div class="form-group">
+				<label for="">Card Number:</label>
+				<input type="text" class="form-control" name="cardNumber" [(ngModel)]="cardNumber">
+			</div>
+			<div class="form-group">
+				<label for="">Card Holder:</label>
+				<input type="text" class="form-control" name="cardHolder" [(ngModel)]="cardHolder">
+			</div>
+			<div class="form-group">
+				<label for="">Expiration Date:</label>
+				<input type="text" class="form-control" name="expirationDate" [(ngModel)]="expirationDate">
+			</div>
+			<div class="form-group">
+				<label for="">cvv:</label>
+				<input type="text" class="form-control" name="cvv" [(ngModel)]="cvv">
+			</div>
+			<input type="submit" class="btn btn-primary">
+			<br>
+			<br>
+		</form>
+	</div>
+</section>

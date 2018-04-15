@@ -26,6 +26,10 @@ const UserSchema = mongoose.Schema({
 	companies: {
 		type: [],
 		required: false
+	},
+	paymentMethods: {
+		type: [],
+		required: false
 	}
 });
 

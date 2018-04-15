@@ -57,6 +57,33 @@ exports.authenticateLogin = (req, res) => {
 			}
 		});
 	})
+};
+
+exports.addPaymentMethod = (req, res) => {
+	User.findById(req.params.id, (err, user) => {
+		if (err) {
+			res.status(500).json(err);
+		}
+
+		if (!user) {
+			res.status(404).json({message: 'User not found'});
+		}
+
+		let newPayment = req.body;
+
+		user.paymentMethods.push(newPayment);
+		user.save((err, user) => {
+			if (err) {
+				res.status(500).json(err);
+			} 
+
+			if (!user) {
+				res.staus(404).json({message: 'User not found'});
+			}
+
+			res.status(201).json({message: 'Created payment method'});
+		})
+	});
 }
 
 const comparePassword = (candidatePassword, hash, callback) => {

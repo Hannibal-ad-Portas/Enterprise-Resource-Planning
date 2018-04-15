@@ -18,6 +18,13 @@ import { UserLoginComponent } from './components/user-login/user-login.component
 import { UserPanelComponent } from './components/user-panel/user-panel.component';
 import { CreateCompanyComponent } from './components/create-company/create-company.component';
 import { ManageCompanyComponent } from './components/manage-company/manage-company.component';
+import { PaymentInfoPanelComponent } from './components/payment-info-panel/payment-info-panel.component';
+import { CreatePaymentMethodComponent } from './components/create-payment-method/create-payment-method.component';
+import { EditUserSettingsNameComponent } from './components/edit-user-settings-name/edit-user-settings-name.component';
+import { EditUserSettingsEmailComponent } from './components/edit-user-settings-email/edit-user-settings-email.component';
+import { EditUserSettingsPasswordComponent } from './components/edit-user-settings-password/edit-user-settings-password.component';
+import { EmployeeLoginComponent } from './components/employee-login/employee-login.component';
+import { EmployeePanelComponent } from './components/employee-panel/employee-panel.component';
 
 const routes: Routes = [
 	{path: '', component: LandingComponent},
@@ -25,7 +32,15 @@ const routes: Routes = [
 	{path: 'user/login', component: UserLoginComponent},
 	{path: 'user/:id', component: UserPanelComponent},
 	{path: 'user/:id/createCompany', component: CreateCompanyComponent},
-	{path: 'user/:id/manageCompany/:companyId', component: ManageCompanyComponent}
+	{path: 'user/:id/manageCompany/:companyId', component: ManageCompanyComponent},
+	{path: 'user/:id/paymentMethod/:index', component: PaymentInfoPanelComponent},
+	{path: 'user/:id/createPaymentMethod', component: CreatePaymentMethodComponent},
+	{path: 'user/:id/edit/name', component: EditUserSettingsNameComponent},
+	{path: 'user/:id/edit/email', component: EditUserSettingsEmailComponent},
+	{path: 'user/:id/edit/password', component: EditUserSettingsPasswordComponent},
+	{path: 'employee/register', component: EmployeeRegisterComponent},
+	{path: 'employee/login', component: EmployeeLoginComponent},
+	{path: 'employee/:id', component: EmployeePanelComponent}
 ];
 
 @NgModule({
@@ -40,6 +55,13 @@ const routes: Routes = [
     UserPanelComponent,
     CreateCompanyComponent,
     ManageCompanyComponent,
+    PaymentInfoPanelComponent,
+    CreatePaymentMethodComponent,
+	EditUserSettingsNameComponent,
+	EditUserSettingsEmailComponent,
+	EditUserSettingsPasswordComponent,
+	EmployeeLoginComponent,
+	EmployeePanelComponent,
   ],
   imports: [
 	BrowserModule,

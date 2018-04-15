@@ -9,9 +9,11 @@ router.post('/createUser', userController.createNewUser);
 
 router.post('/authenticate/login', userController.authenticateLogin);
 
+router.post('/:id/addPayment', userController.addPaymentMethod);
+
 router.get('/userData', passport.authenticate('userLogin', {session: false}), (req, res, next) => {
 	let user = req.user;
 	res.json(user);
-});
+}); 
 
 module.exports = router;

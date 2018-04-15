@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+const User = require('../User/User').User;
 const Employee = require('./Employee').Employee;
 const Company = require('../Company/Company');
 const opts = require('../../config/auth');
@@ -10,10 +11,13 @@ const opts = require('../../config/auth');
 	TODO: Add Password Checking
 */
 
+// TODO: Nest this shit
+
 exports.createNewEmployee = (req, res) => {
 	let newEmployee = new Employee(req.body);
+	const companyCode = req.params.companyCode
 
-	Company.findById(req.params.companyId, (err, company) => {
+	Company.findOne({"companyCode": companyCode}, (err, company) => {
 		if (err) {
 			res.status(500).send(err);
 		}
@@ -32,7 +36,6 @@ exports.createNewEmployee = (req, res) => {
 					res.status(500).send(err);
 				}
 
-				newEmployee.parentCompanyCode = company.companyCode;
 				newEmployee.password = hash;
 
 				company.employees.push(newEmployee);
@@ -40,8 +43,36 @@ exports.createNewEmployee = (req, res) => {
 					if (err) {
 						res.status(500).send(err);
 					}
-					res.status(201).json(employee);
+					//res.status(201).json(employee);
 				});
+
+				User.findById(company.parentId, (err, user) => {
+					if (err) {
+						res.status(500).send(err);
+					}
+
+					for (let i = 0; i < user.companies.length; i++) {
+						let companies = user.companies[i];
+						if (companies._id.toString() ===  company._id.toString()) {
+							console.log(true)
+							user.companies.splice(i, 1);
+							user.companies.push(company);
+							user.save((err, employee) => {
+								if (err) {
+									res.status(500).send(err);
+								}
+								//res.status(201).json(employee);
+							});
+						}
+					}
+				});
+
+				newEmployee.save((err, employee) => {
+					if (err) {
+						res.status(500).send(err);
+					}
+					res.status(201).json(employee);
+				})
 			});
 		});
 	});
@@ -131,7 +162,7 @@ exports.deleteEmployee = (req, res) => {
 }
 
 exports.authenticateLogin = (req, res) => {
-	Company.findById(req.params.companyId, (err, company) => {
+	Company.findOne({companyCode: req.params.companyCode}, (err, company) => {
 		if (err) {
 			res.status(500).send(err);
 		}

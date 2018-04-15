@@ -24,3 +24,35 @@
 	</div>
 	<br>
 </section>
+<section class="">
+	<br>
+	<div class="container">
+		<div class="card shadow">
+			<div class="card-body">
+				<h5 class="card-title">Payment Methods</h5>
+				<h6 class="card-subtitle mb-2 text-muted">Click a payment method to manage it</h6>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item" *ngFor="let method of paymentMethods"> <a class="text-primary" (click)="onPaymentClick($event)">{{method.cardNumber}}</a> </li>
+				</ul>
+				<br>
+				<button class="btn-primary btn" (click)="onCreatePaymentClick()">Add Payment Method</button>
+			</div>
+		</div>
+	</div>
+	<br>
+</section>
+<section class="default-primary-color">
+	<br>
+	<div class="container">
+		<div class="card shadow">
+			<div class="card-body">
+				<h5 class="card-title">Settings</h5>
+				<h6 class="card-subtitle mb-2 text-muted">Click an option to manage it</h6>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item" *ngFor="let setting of settings"> <a class="text-primary" (click)="onSettingClick($event)">{{setting}}</a> </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<br>
+</section>

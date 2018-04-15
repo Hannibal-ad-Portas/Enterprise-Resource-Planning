@@ -22,19 +22,23 @@ const EmployeeSchema = new Schema({
 	},
 	salary: {
 		type: String,
-		required: false
+		required: false,
+		default: "null"
 	},
 	permissions: {
 		type: [String],
-		required: false
+		required: false,
+		default: "null"
 	},
 	department: {
 		type: String,
-		required: false
+		required: false,
+		default: "null"
 	},
 	position: {
 		type: String,
-		required: false
+		required: false,
+		default: "null"
 	},
 	createdOn: {
 		type: Date,

@@ -1,4 +1,4 @@
-const Company = require('./Company');
+const Company = require('./Company').Company;
 const User = require('../User/User').User;
 
 exports.createNewCompany = (req, res) => {
@@ -49,6 +49,11 @@ exports.findCompanyById = (req, res) => {
 	});
 };
 
+exports.findCompanyByCompanyCode = (companyCode, callback) => {
+	const query = {companyCode: companyCode}
+	Company.findOne(query, callback);
+}
+
 exports.updateCompany = (req, res) => {
 	Company.findOneAndUpdate(
 		{ _id: req.params.companyid },
@@ -78,7 +83,7 @@ const makeId = () => {
 	let text = '';
 	let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-	for (let i = 0; i < 5; i++) {
+	for (let i = 0; i < 4; i++) {
 		text += possible.charAt(Math.floor(Math.random() * possible.length));
 	}
 

@@ -1,12 +1,13 @@
-<section class="registerBg">
+<section class="loginBg">
 	<app-navbar></app-navbar>
+	<flash-messages></flash-messages>
 	<div class="container text-primary-color">
 		<br>
 		<br>
-		<h2 class="display-2 text-center ">Register Employee</h2>
+		<h2 class="display-2 text-center">Employee Login</h2>
 		<br>
 		<br>
-		<form action="" (submit)="onRegisterEmployeeSubmit()">
+		<form action="" (submit)="onEmployeeLoginSubmit()">
 			<div class="form-group">
 				<label for="">Email:</label>
 				<input type="email" class="form-control" name="email" [(ngModel)]="email">
@@ -14,14 +15,6 @@
 			<div class="form-group">
 				<label for="">Password:</label>
 				<input type="password" class="form-control" name="password" [(ngModel)]="password">
-			</div>
-			<div class="form-group">
-				<label for="">First Name:</label>
-				<input type="text" class="form-control" name="firstName" [(ngModel)]="firstName">
-			</div>
-			<div class="form-group">
-				<label for="">Last Name:</label>
-				<input type="text" class="form-control" name="lastName" [(ngModel)]="lastName">
 			</div>
 			<div class="form-group">
 				<label for="">Company Code:</label>
@@ -33,7 +26,6 @@
 		</form>
 		<br>
 		<br>
-		<a routerLink="/user/register" class="btn btn-primary">User Register</a>
+		<a routerLink="/user/login" class="btn btn-primary">User Login</a>
 	</div>
 </section>
-
