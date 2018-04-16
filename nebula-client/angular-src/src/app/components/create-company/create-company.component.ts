@@ -42,8 +42,6 @@ export class CreateCompanyComponent implements OnInit, OnDestroy {
 	  }
 
 	  this.authService.createCompany(company).subscribe(data => {
-		this.flashMessagesService.show('Company Created', {cssClass: 'alert-success', timeout: 3000});
-		this.router.navigate(['user/' + this.user.id]);
 		if (data) {
 			this.flashMessagesService.show('Company Created', {cssClass: 'alert-success', timeout: 3000});
 			this.router.navigate(['user/' + this.user.id]);
