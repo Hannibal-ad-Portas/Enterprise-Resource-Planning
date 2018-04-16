@@ -40,7 +40,8 @@ exports.listAllCompanies = (req, res) => {
 };
 
 exports.findCompanyById = (req, res) => {
-	Company.findById(req.params.companyid, (err, company) => {
+	const query = {_id: req.params.companyid};
+	Company.findOne(query, (err, company) => {
 		if (err) {
 			res.status(500).send(err);
 		}

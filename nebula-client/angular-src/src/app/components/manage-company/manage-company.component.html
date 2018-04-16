@@ -1,3 +1,81 @@
-<p>
-  manage-company works!
-</p>
+<app-navbar></app-navbar>
+<section>
+	<div class="container text-center" *ngIf="company">
+		<h3 class="display-3">{{company.companyName}}</h3>
+	</div>
+	<br>
+	<br>
+	<div class="container text-center" *ngIf="!company">
+		<h3 class="display-3">Error Company Not Found</h3>
+	</div>
+	<br>
+	<br>
+</section>
+<section class="default-primary-color">
+	<br>
+	<div class="container">
+		<div class="card shadow">
+			<div class="card-body">
+				<h5 class="card-title">Company Info</h5>
+				<h6 class="card-subtitle mb-2 text-muted">Click an option to manage it</h6>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item" > Company Code: <a class="text-primary" >{{company.companyCode}}</a> </li>
+					<li class="list-group-item" > Subscription: <a class="text-primary" >{{company.subscriptionPlan}}  ${{company.subscriptionCost}}/month</a></li>
+				</ul>
+				<br>
+			</div>
+		</div>
+	</div>
+	<br>
+</section>
+<section class="default-primary-color">
+	<br>
+	<div class="container">
+		<div class="card shadow">
+			<div class="card-body">
+				<h5 class="card-title">Employees</h5>
+				<h6 class="card-subtitle mb-2 text-muted">Click an option to manage it</h6>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item" *ngFor="let employee of employees" >{{employee.firstName}} {{employee.lastName}}:  <a class="text-primary" (click)="onEmployeeClick($event)">{{employee._id}}</a></li>
+				</ul>
+				<br>
+				<button class="btn-primary btn" (click)="onAddEmployeeClick()">Add Employee</button>
+			</div>
+		</div>
+	</div>
+	<br>
+</section>
+<section class="default-primary-color">
+	<br>
+	<div class="container">
+		<div class="card shadow">
+			<div class="card-body">
+				<h5 class="card-title">Customers</h5>
+				<h6 class="card-subtitle mb-2 text-muted">Click an option to manage it</h6>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item" *ngFor="let customer of customers"> <a class="text-primary" >{{customer.name}}</a> </li>
+				</ul>
+				<br>
+				<button class="btn-primary btn" (click)="onAddCustomerClick()">Add Customer</button>
+			</div>
+		</div>
+	</div>
+	<br>
+</section>
+<section class="default-primary-color">
+	<br>
+	<div class="container">
+		<div class="card shadow">
+			<div class="card-body">
+				<h5 class="card-title">Inventory</h5>
+				<h6 class="card-subtitle mb-2 text-muted">Click an option to manage it</h6>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item" *ngFor="let item of inventory"> <a class="text-primary" >{{item.name}}: {{item.sku}}</a> </li>
+				</ul>
+				<br>
+				<button class="btn-primary btn" (click)="onAddItemClick()">Add Item</button>
+			</div>
+		</div>
+	</div>
+	<br>
+</section>

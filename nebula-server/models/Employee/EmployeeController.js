@@ -66,13 +66,6 @@ exports.createNewEmployee = (req, res) => {
 						}
 					}
 				});
-
-				newEmployee.save((err, employee) => {
-					if (err) {
-						res.status(500).send(err);
-					}
-					res.status(201).json(employee);
-				})
 			});
 		});
 	});

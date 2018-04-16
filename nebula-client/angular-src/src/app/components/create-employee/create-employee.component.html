@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+
+<section>
+	<div class="container text-center">
+		<h2 class="display-2">Create Employee</h2>
+	</div>
+	<br>
+	<br>
+</section>
+<section class="default-primary-color text-white">
+	<br>
+	<div class="container">
+		<form (submit)="onCreateEmployeeSubmit()" #f="ngForm" >
+			<div class="form-group">
+				<label for="">First Name:</label>
+				<input type="text" class="form-control" name="firstName" [(ngModel)]="firstName">
+			</div>
+			<div class="form-group">
+				<label for="">Last Name:</label>
+				<input type="text" class="form-control" name="lastName" [(ngModel)]="lastName">
+			</div>
+			<div class="form-group">
+				<label for="">Email:</label>
+				<input type="text" class="form-control" name="email" [(ngModel)]="email">
+			</div>
+			<div class="form-group">
+				<label for="">Password</label>
+				<input type="text" class="form-control" name="password" [(ngModel)]="password">
+			</div>
+			<div class="form-group">
+				<label for="depts">Department:</label>
+				<select name="depts" id="depts" class="form-control" [(ngModel)]="department">
+					<option *ngFor="let dept of this.departments" [value]="dept">{{dept}}</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="">Position</label>
+				<input type="text" class="form-control" name="position" [(ngModel)]="position">
+			</div>
+			<div class="form-group">
+				<label for="">Salary</label>
+				<input type="text" class="form-control" name="salary" [(ngModel)]="salary">
+			</div>
+			<input type="submit" class="btn btn-primary">
+			<br>
+			<br>
+		</form>
+	</div>
+</section> 

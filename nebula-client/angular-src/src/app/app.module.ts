@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { EmployeeRegisterComponent } from './components/employee-register/employee-register.component';
 import { UserRegisterComponent } from './components/user-register/user-register.component';
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
@@ -25,6 +24,7 @@ import { EditUserSettingsEmailComponent } from './components/edit-user-settings-
 import { EditUserSettingsPasswordComponent } from './components/edit-user-settings-password/edit-user-settings-password.component';
 import { EmployeeLoginComponent } from './components/employee-login/employee-login.component';
 import { EmployeePanelComponent } from './components/employee-panel/employee-panel.component';
+import { CreateEmployeeComponent } from './components/create-employee/create-employee.component';
 
 const routes: Routes = [
 	{path: '', component: LandingComponent},
@@ -33,12 +33,12 @@ const routes: Routes = [
 	{path: 'user/:id', component: UserPanelComponent},
 	{path: 'user/:id/createCompany', component: CreateCompanyComponent},
 	{path: 'user/:id/manageCompany/:companyId', component: ManageCompanyComponent},
+	{path: 'user/:id/addEmployee/:companyId', component: CreateEmployeeComponent},
 	{path: 'user/:id/paymentMethod/:index', component: PaymentInfoPanelComponent},
 	{path: 'user/:id/createPaymentMethod', component: CreatePaymentMethodComponent},
 	{path: 'user/:id/edit/name', component: EditUserSettingsNameComponent},
 	{path: 'user/:id/edit/email', component: EditUserSettingsEmailComponent},
 	{path: 'user/:id/edit/password', component: EditUserSettingsPasswordComponent},
-	{path: 'employee/register', component: EmployeeRegisterComponent},
 	{path: 'employee/login', component: EmployeeLoginComponent},
 	{path: 'employee/:id', component: EmployeePanelComponent}
 ];
@@ -49,7 +49,6 @@ const routes: Routes = [
     LandingComponent,
     NavbarComponent,
     FooterComponent,
-    EmployeeRegisterComponent,
     UserRegisterComponent,
     UserLoginComponent,
     UserPanelComponent,
@@ -62,6 +61,7 @@ const routes: Routes = [
 	EditUserSettingsPasswordComponent,
 	EmployeeLoginComponent,
 	EmployeePanelComponent,
+	CreateEmployeeComponent,
   ],
   imports: [
 	BrowserModule,

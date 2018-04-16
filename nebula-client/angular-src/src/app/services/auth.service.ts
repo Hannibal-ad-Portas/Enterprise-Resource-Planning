@@ -45,6 +45,13 @@ export class AuthService {
 		return this.http.post('http://localhost:3000/api/company/createCompany', company, {headers: headers}).map(res => res.json());
 	}
 
+	getCompanyByCompanyId(companyId) {
+		let headers = new Headers();
+		this.loadUserToken();
+		headers.append('Content-Type', 'application/json');
+		return this.http.get('http://localhost:3000/api/company/' + companyId +'/find', {headers: headers}).map(res => res.json());
+	}
+
   storeUserData(token, user) {
 	  localStorage.setItem('user_id_token', token);
 	  localStorage.setItem('user', JSON.stringify(user));
@@ -66,7 +73,7 @@ export class AuthService {
   registerEmployee(employee, companyCode) {
 	let headers = new Headers();
 	headers.append('Content-Type', 'application/json');
-	return this.http.post('http://localhost:3000/api/employee/' + companyCode.toString() + '/createNewEmployee', employee, {headers: headers}).map(res => res.json());
+	return this.http.post('http://localhost:3000/api/employee/' + companyCode + '/createNewEmployee', employee, {headers: headers}).map(res => res.json());
   }
 
   authenticateEmployee(employee, companyCode) {
