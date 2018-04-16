@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+
+<section>
+	<div class="container text-center">
+		<h2 class="display-2">Create Customer</h2>
+	</div>
+	<br>
+	<br>
+</section>
+<section class="default-primary-color text-white">
+	<br>
+	<div class="container">
+		<form (submit)="onCreateCustomerSubmit()" #f="ngForm" >
+			<div class="form-group">
+				<label for="">Name</label>
+				<input type="text" class="form-control" name="name" [(ngModel)]="name">
+			</div>
+			<div class="form-group">
+				<label for="">address</label>
+				<input type="text" class="form-control" name="address" [(ngModel)]="address">
+			</div>
+			<input type="submit" class="btn btn-primary">
+			<br>
+			<br>
+		</form>
+	</div>
+</section> 

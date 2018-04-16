@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+
+<section>
+	<div class="container text-center">
+		<h2 class="display-2">Add Item To Inventory</h2>
+	</div>
+	<br>
+	<br>
+</section>
+<section class="default-primary-color text-white">
+	<br>
+	<div class="container">
+		<form (submit)="onCreateItemSubmit()" #f="ngForm" >
+			<div class="form-group">
+				<label for="">Name</label>
+				<input type="text" class="form-control" name="name" [(ngModel)]="name">
+			</div>
+			<div class="form-group">
+				<label for="">description</label>
+				<input type="text" class="form-control" name="description" [(ngModel)]="description">
+			</div>
+			<div class="form-group">
+				<label for="">sku</label>
+				<input type="text" class="form-control" name="sku" [(ngModel)]="sku">
+			</div>
+			<div class="form-group">
+				<label for="">amount</label>
+				<input type="text" class="form-control" name="amount" [(ngModel)]="amount">
+			</div>
+			<div class="form-group">
+				<label for="">units of measurment</label>
+				<input type="text" class="form-control" name="measurment" [(ngModel)]="measurment">
+			</div>
+			<input type="submit" class="btn btn-primary">
+			<br>
+			<br>
+		</form>
+	</div>
+</section> 

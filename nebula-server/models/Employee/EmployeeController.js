@@ -54,7 +54,6 @@ exports.createNewEmployee = (req, res) => {
 					for (let i = 0; i < user.companies.length; i++) {
 						let companies = user.companies[i];
 						if (companies._id.toString() ===  company._id.toString()) {
-							console.log(true)
 							user.companies.splice(i, 1);
 							user.companies.push(company);
 							user.save((err, employee) => {
@@ -88,7 +87,8 @@ exports.listAllEmployees = (req, res) => {
 };
 
 exports.findEmployeeById = (req, res) => {
-	Company.findById(req.params.companyId, (err, company) => {
+	const query = {_id: req.params.companyId};
+	Company.findOne(query, (err, company) => {
 		if (err) {
 			res.status(500).send(err);
 		}

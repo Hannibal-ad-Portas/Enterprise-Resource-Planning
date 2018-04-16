@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
+// TODO: Edit Employee Functionality
+
 @Component({
   selector: 'app-manage-company',
   templateUrl: './manage-company.component.html',
@@ -43,8 +45,17 @@ export class ManageCompanyComponent implements OnInit, OnDestroy {
 	  this.router.navigate(['user/' + this.company.parentId + '/addEmployee/' + this.company._id]);
   }
 
+  onAddCustomerClick() {
+	  this.router.navigate(['user/' + this.company.parentId + '/addCustomer/' + this.company._id])
+  }
+
+  onAddItemClick() {
+	this.router.navigate(['user/' + this.company.parentId + '/addItem/' + this.company._id])
+  }
+
   onEmployeeClick(event) {
-	  console.log(event.target.innerHTML);
+	  let empId = event.target.innerHTML;
+	  this.router.navigate(['user/' + this.company.parentId + '/manageEmployee/' + empId]);
   }
 
   getCompanyIdFromUrl(url) {

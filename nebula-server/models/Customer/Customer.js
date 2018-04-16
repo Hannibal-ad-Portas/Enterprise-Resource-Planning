@@ -18,7 +18,7 @@ const CustomerSchema = mongoose.Schema({
 		required: false
 	},
 	paymentInfo: {
-		type: [PaymentInfoType],
+		type: [],
 		required: false
 	}
 });

@@ -1,6 +1,7 @@
 const Customer = require('./Customer').Customer;
 const Company = require('../Company/Company');
 const PaymentInfo = require('../PaymentInfo/PaymentInfo');
+const User = require('../User/User').User;
 
 // TODO: Add method to edit payment info
 
@@ -22,7 +23,26 @@ exports.createNewCustomer = (req, res) => {
 			if (err) {
 				res.status(500).json(err);
 			}
-			res.status(201).json(customer);
+			
+			User.findById(company.parentId, (err, user) => {
+				if (err) {
+					res.status(500).send(err);
+				}
+
+				for (let i = 0; i < user.companies.length; i++) {
+					let companies = user.companies[i];
+					if (companies._id.toString() ===  company._id.toString()) {
+						user.companies.splice(i, 1);
+						user.companies.push(company);
+						user.save((err, employee) => {
+							if (err) {
+								res.status(500).send(err);
+							}
+							//res.status(201).json(employee);
+						});
+					}
+				}
+			});
 		});
 	});
 };

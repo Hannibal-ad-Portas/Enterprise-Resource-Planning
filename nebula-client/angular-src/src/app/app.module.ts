@@ -25,6 +25,9 @@ import { EditUserSettingsPasswordComponent } from './components/edit-user-settin
 import { EmployeeLoginComponent } from './components/employee-login/employee-login.component';
 import { EmployeePanelComponent } from './components/employee-panel/employee-panel.component';
 import { CreateEmployeeComponent } from './components/create-employee/create-employee.component';
+import { ManageEmployeeComponent } from './components/manage-employee/manage-employee.component';
+import { CreateCustomerComponent } from './components/create-customer/create-customer.component';
+import { CreateItemComponent } from './components/create-item/create-item.component';
 
 const routes: Routes = [
 	{path: '', component: LandingComponent},
@@ -34,13 +37,16 @@ const routes: Routes = [
 	{path: 'user/:id/createCompany', component: CreateCompanyComponent},
 	{path: 'user/:id/manageCompany/:companyId', component: ManageCompanyComponent},
 	{path: 'user/:id/addEmployee/:companyId', component: CreateEmployeeComponent},
+	{path: 'user/:id/addCustomer/:companyId', component: CreateCustomerComponent},
+	{path: 'user/:id/addItem/:companyId', component: CreateItemComponent},
 	{path: 'user/:id/paymentMethod/:index', component: PaymentInfoPanelComponent},
 	{path: 'user/:id/createPaymentMethod', component: CreatePaymentMethodComponent},
 	{path: 'user/:id/edit/name', component: EditUserSettingsNameComponent},
 	{path: 'user/:id/edit/email', component: EditUserSettingsEmailComponent},
 	{path: 'user/:id/edit/password', component: EditUserSettingsPasswordComponent},
 	{path: 'employee/login', component: EmployeeLoginComponent},
-	{path: 'employee/:id', component: EmployeePanelComponent}
+	{path: 'employee/:id', component: EmployeePanelComponent},
+	{path: 'user/:id/manageEmployee/:employeeId', component: ManageEmployeeComponent}
 ];
 
 @NgModule({
@@ -62,6 +68,9 @@ const routes: Routes = [
 	EmployeeLoginComponent,
 	EmployeePanelComponent,
 	CreateEmployeeComponent,
+	ManageEmployeeComponent,
+	CreateCustomerComponent,
+	CreateItemComponent,
   ],
   imports: [
 	BrowserModule,
