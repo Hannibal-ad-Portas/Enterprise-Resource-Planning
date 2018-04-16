@@ -15,8 +15,7 @@ const CompanySchema = new Schema({
 		required: true
 	},
 	employees: {
-		type: [EmployeeType],
-		required: false
+		type: []
 	},
 	inventory: {
 		type: [ItemType],

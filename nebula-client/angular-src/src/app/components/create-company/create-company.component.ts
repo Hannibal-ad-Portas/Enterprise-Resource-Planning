@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
@@ -8,7 +8,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   templateUrl: './create-company.component.html',
   styleUrls: ['./create-company.component.scss']
 })
-export class CreateCompanyComponent implements OnInit {
+export class CreateCompanyComponent implements OnInit, OnDestroy {
 	companyName: String;
 	subscriptionPlan: any;
 	subscriptions: String[];
@@ -29,6 +29,10 @@ export class CreateCompanyComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnDestroy() {
+	  
+  }
+
   onCreateCompanySubmit() {
 	  const company = {
 		  companyName: this.companyName,
@@ -38,7 +42,7 @@ export class CreateCompanyComponent implements OnInit {
 	  }
 
 	  this.authService.createCompany(company).subscribe(data => {
-		if (data.success) {
+		if (data) {
 			this.flashMessagesService.show('Company Created', {cssClass: 'alert-success', timeout: 3000});
 			this.router.navigate(['user/' + this.user.id]);
 		} else {

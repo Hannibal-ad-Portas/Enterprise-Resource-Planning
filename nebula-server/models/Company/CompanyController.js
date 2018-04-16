@@ -1,4 +1,4 @@
-const Company = require('./Company').Company;
+const Company = require('./Company');
 const User = require('../User/User').User;
 
 exports.createNewCompany = (req, res) => {
